@@ -33,8 +33,8 @@ function _ajax_contact()
   // support d'un contenu Html dans l'email
   add_filter('wp_mail_content_type', create_function('', 'return "text/html";'));
   /* pour voir le html dans un mail */
-
-  if (wp_mail('marchalyoan@gmail.com', $subject, $mail, $headers)) {
+  $adminMail = get_option('admin_email');
+  if (wp_mail($adminMail, $subject, $mail, $headers)) {
       // le mail est envoyer
     wp_send_json('success');
   } else {
